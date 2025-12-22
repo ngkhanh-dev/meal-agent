@@ -1,3 +1,6 @@
+from trace import trace_node
+
+@trace_node("check_complete")
 def check_complete(state):
     missing = []
 

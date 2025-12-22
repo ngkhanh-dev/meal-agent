@@ -5,6 +5,7 @@ import json
 import re
 import os
 from dotenv import load_dotenv
+from trace import trace_node
 load_dotenv()
 
 
@@ -18,18 +19,15 @@ llm = ChatGoogleGenerativeAI(
 
 def extract_json(raw: str) -> dict:
     raw = raw.strip()
-
-    # Case 1: Markdown ```json ... ```
-    match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", raw, re.DOTALL)
-    if match:
-        raw = match.group(1)
-
-    # Case 2: Plain JSON
+    raw = re.sub(r"^```json", "", raw)
+    raw = re.sub(r"```$", "", raw)
+    
     try:
         return json.loads(raw)
     except json.JSONDecodeError as e:
         raise ValueError(f"Invalid JSON from LLM:\n{raw}") from e
 
+@trace_node("menu_agent")
 def menu_agent(state):
     prompt = f"""
     User request: {state['user_message']}

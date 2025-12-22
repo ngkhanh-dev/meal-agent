@@ -4,6 +4,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 import json
 import re
+from trace import trace_node
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -17,18 +18,15 @@ llm = ChatGoogleGenerativeAI(
 
 def extract_json(raw: str) -> dict:
     raw = raw.strip()
+    raw = re.sub(r"^```json", "", raw)
+    raw = re.sub(r"```$", "", raw)
 
-    # Case 1: Markdown ```json ... ```
-    match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", raw, re.DOTALL)
-    if match:
-        raw = match.group(1)
-
-    # Case 2: Plain JSON
     try:
         return json.loads(raw)
     except json.JSONDecodeError as e:
         raise ValueError(f"Invalid JSON from LLM:\n{raw}") from e
 
+@trace_node("slot_detect")
 def slot_detect(state):
     msg = state["user_message"].lower()
 

@@ -17,7 +17,7 @@ graph.add_node("context", load_context)
 graph.add_node("slot", slot_detect)
 graph.add_node("check", check_complete)
 graph.add_node("clarify", ask_clarification)
-graph.add_node("menu", menu_agent)
+graph.add_node("menuu", menu_agent)
 graph.add_node("validate", validate_order)
 graph.add_node("order", create_order)
 
@@ -30,50 +30,38 @@ graph.add_edge("slot", "check")
 
 # ===== Routing sau CHECK =====
 def route_after_check(state: OrderState):
-    if state["need_clarification"]:
-        return "clarify"
-    return "menu"
+    decision = "clarify" if state.need_clarification else "validate"
+    print(f"[ROUTE] check → {decision}")
+    return decision
 
 graph.add_conditional_edges(
     "check",
     route_after_check,
     {
         "clarify": "clarify",
-        "menu": "menu"
-    }
+        "validate": "validate",
+    },
 )
 
-# ===== Clarify kết thúc lượt hỏi =====
-graph.add_edge("clarify", END)
+# ===== Clarify flow =====
+# clarify chỉ hỏi → user trả lời → slot detect lại
+graph.add_edge("clarify", "slot")
 
-# ===== Menu agent chỉ refine items, xong QUAY LẠI CHECK =====
-graph.add_edge("menu", "check")
 
-# ===== Routing sau VALIDATE =====
-# validate_order PHẢI set:
-# state["validation_decision"] = "confirm" | "edit"
+# ===== Routing  VALIDATE =====
 def route_after_validate(state: OrderState):
-    decision = state.get("validation_decision")
-    if decision == "edit":
-        return "slot"
-    if decision == "confirm":
-        return "order"
-    # fallback an toàn
-    return END
+    decision = "order" if state.confirmation else "slot"
+    print(f"[ROUTE] validate → {decision}")
+    return decision
 
 graph.add_conditional_edges(
     "validate",
     route_after_validate,
     {
-        "slot": "slot",
         "order": "order",
-        END: END
-    }
+        "slot": "slot",
+    },
 )
-
-# ===== Check → Validate =====
-# CHỈ KHI ĐÃ ĐỦ SLOT
-graph.add_edge("check", "validate")
 
 # ===== Order là điểm cuối =====
 graph.add_edge("order", END)

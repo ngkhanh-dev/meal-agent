@@ -1,0 +1,602 @@
+ERROR:    Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 664, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\routing.py", line 741, in lifespan
+    await receive()
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\lifespan\on.py", line 137, in receive
+    return await self.receive_queue.get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\queues.py", line 158, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+Process SpawnProcess-10:
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 664, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 108, in run       
+    self._target(*self._args, **self._kwargs)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:     Started server process [24060]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'nodes\validate.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24060]
+Process SpawnProcess-11:
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 664, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 108, in run       
+    self._target(*self._args, **self._kwargs)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+WARNING:  WatchFiles detected changes in 'nodes\clarify.py', 'nodes\slot_detect.py', 'nodes\validate.py', 'trace.py', 'nodes\context.py', 'nodes\menu_agent.py', 'nodes\create_order.py', 'nodes\check_complete.py'. Reloading...
+INFO:     Started server process [21316]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 664, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\routing.py", line 741, in lifespan
+    await receive()
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\lifespan\on.py", line 137, in receive
+    return await self.receive_queue.get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\queues.py", line 158, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+Process SpawnProcess-12:
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 664, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 108, in run       
+    self._target(*self._args, **self._kwargs)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+WARNING:  WatchFiles detected changes in 'nodes\check_complete.py'. Reloading...
+INFO:     Started server process [19800]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 664, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\routing.py", line 741, in lifespan
+    await receive()
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\lifespan\on.py", line 137, in receive
+    return await self.receive_queue.get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\queues.py", line 158, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+Process SpawnProcess-13:
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 664, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 108, in run       
+    self._target(*self._args, **self._kwargs)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:     Started server process [14736]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'nodes\clarify.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [14736]
+Process SpawnProcess-14:
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 664, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 108, in run       
+    self._target(*self._args, **self._kwargs)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:     Started server process [20344]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'nodes\menu_agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     127.0.0.1:55565 - "GET / HTTP/1.1" 200 OK
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [20344]
+Process SpawnProcess-15:
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 664, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 108, in run       
+    self._target(*self._args, **self._kwargs)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+WARNING:  WatchFiles detected changes in 'graph.py', 'nodes\validate.py', 'nodes\create_order.py'. Reloading...
+INFO:     Started server process [15092]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 664, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\routing.py", line 741, in lifespan
+    await receive()
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\lifespan\on.py", line 137, in receive
+    return await self.receive_queue.get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\queues.py", line 158, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+Process SpawnProcess-16:
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 664, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py", line 108, in run       
+    self._target(*self._args, **self._kwargs)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:     Started server process [27604]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+
+============================================================
+[TRACE] 2025-12-22T23:00:43.080552
+[NODE ] context
+[IN   ] {
+  "user_id": null,
+  "user_message": "thời hôm nay như nào",
+  "need_clarification": false
+}
+[OUT  ] {
+  "user_id": null,
+  "user_message": "thời hôm nay như nào",
+  "need_clarification": false,
+  "kitchen": {
+    "id": "K1",
+    "name": "Bếp A"
+  },
+  "menu": [
+    {
+      "menu_id": "M1",
+      "name": "Cơm gà"
+    },
+    {
+      "menu_id": "M2",
+      "name": "Cơm cá"
+    }
+  ],
+  "holidays": [
+    {
+      "date": "2025-12-20",
+      "reason": "Nghỉ lễ"
+    }
+  ]
+}
+============================================================
+
+============================================================
+[TRACE] 2025-12-22T23:00:43.081556
+[NODE ] slot_detect
+[IN   ] {
+  "user_id": null,
+  "user_message": "thời hôm nay như nào",
+  "kitchen": {
+    "id": "K1",
+    "name": "Bếp A"
+  },
+  "menu": [
+    {
+      "menu_id": "M1",
+      "name": "Cơm gà"
+    },
+    {
+      "menu_id": "M2",
+      "name": "Cơm cá"
+    }
+  ],
+  "holidays": [
+    {
+      "date": "2025-12-20",
+      "reason": "Nghỉ lễ"
+    }
+  ],
+  "need_clarification": false
+}
+RAW LLM OUTPUT: '```json\n{\n  "date": null,\n  "menu_name": null\n}\n```'
+[OUT  ] {
+  "user_id": null,
+  "user_message": "thời hôm nay như nào",
+  "kitchen": {
+    "id": "K1",
+    "name": "Bếp A"
+  },
+  "menu": [
+    {
+      "menu_id": "M1",
+      "name": "Cơm gà"
+    },
+    {
+      "menu_id": "M2",
+      "name": "Cơm cá"
+    }
+  ],
+  "holidays": [
+    {
+      "date": "2025-12-20",
+      "reason": "Nghỉ lễ"
+    }
+  ],
+  "need_clarification": false,
+  "selected_date": null,
+  "selected_items": null
+}
+============================================================
+
+============================================================
+[TRACE] 2025-12-22T23:00:44.753221
+[NODE ] check_complete
+[IN   ] {
+  "user_id": null,
+  "user_message": "thời hôm nay như nào",
+  "kitchen": {
+    "id": "K1",
+    "name": "Bếp A"
+  },
+  "menu": [
+    {
+      "menu_id": "M1",
+      "name": "Cơm gà"
+    },
+    {
+      "menu_id": "M2",
+      "name": "Cơm cá"
+    }
+  ],
+  "holidays": [
+    {
+      "date": "2025-12-20",
+      "reason": "Nghỉ lễ"
+    }
+  ],
+  "selected_date": null,
+  "selected_items": null,
+  "need_clarification": false
+}
+[OUT  ] {
+  "user_id": null,
+  "user_message": "thời hôm nay như nào",
+  "kitchen": {
+    "id": "K1",
+    "name": "Bếp A"
+  },
+  "menu": [
+    {
+      "menu_id": "M1",
+      "name": "Cơm gà"
+    },
+    {
+      "menu_id": "M2",
+      "name": "Cơm cá"
+    }
+  ],
+  "holidays": [
+    {
+      "date": "2025-12-20",
+      "reason": "Nghỉ lễ"
+    }
+  ],
+  "selected_date": null,
+  "selected_items": null,
+  "need_clarification": true,
+  "clarification_question": "Bạn chưa chọn ngày và món, vui lòng bổ sung."
+}
+============================================================
+INFO:     127.0.0.1:50294 - "POST /chat HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__       
+    await super().__call__(scope, receive, send)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\applications.py", line 123, in __call__      
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__ 
+    raise exc
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__ 
+    await self.app(scope, receive, _send)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__    
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\middleware\cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\fastapi\routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\fastapi\routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\starlette\concurrency.py", line 42, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\anyio\to_thread.py", line 61, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2525, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\main.py", line 39, in chat
+    result = graph_app.invoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\langgraph\pregel\__init__.py", line 1936, in invoke    
+    for chunk in self.stream(
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\langgraph\pregel\__init__.py", line 1656, in stream    
+    for _ in runner.tick(
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\langgraph\pregel\runner.py", line 167, in tick
+    run_with_retry(
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\langgraph\pregel\retry.py", line 40, in run_with_retry 
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\langgraph\utils\runnable.py", line 410, in invoke      
+    input = step.invoke(input, config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\langgraph\utils\runnable.py", line 184, in invoke      
+    ret = context.run(self.func, input, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\langgraph\graph\graph.py", line 95, in _route
+    result = self.path.invoke(value, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\langgraph\utils\runnable.py", line 176, in invoke      
+    ret = context.run(self.func, input, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Nguyen Dang Khanh\meal_agent\graph.py", line 33, in route_after_check
+    decision = "clarify" if state.need_clarification else "validate"
+                            ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'need_clarification'
+During task with name 'check' and id 'e30db777-0267-a44f-29e1-7476865a548f'
