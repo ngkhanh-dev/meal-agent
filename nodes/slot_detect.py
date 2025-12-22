@@ -1,0 +1,63 @@
+import json
+# from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
+import os
+import json
+import re
+from dotenv import load_dotenv
+load_dotenv()
+
+# llm = (model="gpt-4o-mini", temperature=0, api_key=os.getenv("OPENAI_API_KEY"))
+
+llm = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash",
+    temperature=0,
+    api_key=os.getenv("GEMINI_API_KEY")
+)
+
+def extract_json(raw: str) -> dict:
+    raw = raw.strip()
+
+    # Case 1: Markdown ```json ... ```
+    match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", raw, re.DOTALL)
+    if match:
+        raw = match.group(1)
+
+    # Case 2: Plain JSON
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Invalid JSON from LLM:\n{raw}") from e
+
+def slot_detect(state):
+    msg = state["user_message"].lower()
+
+    if msg in ["đồng ý", "ok", "xác nhận"]:
+        state["confirmation"] = "yes"
+        return state
+
+    if msg in ["sửa", "chỉnh", "thay đổi"]:
+        state["confirmation"] = "edit"
+        return state
+    
+    prompt = f"""
+    User message: {state['user_message']}
+
+    Extract info if exists.
+    Output JSON:
+    {{
+      "date": null | "YYYY-MM-DD",
+      "menu_name": null | "string"
+    }}
+    """
+    raw = llm.invoke(prompt).content
+    print("RAW LLM OUTPUT:", repr(raw))
+    # data = json.loads(raw)
+    data = extract_json(raw)
+
+    state["selected_date"] = data["date"]
+    state["selected_items"] = (
+        [{"name": data["menu_name"], "quantity": 1}]
+        if data["menu_name"] else None
+    )
+    return state
