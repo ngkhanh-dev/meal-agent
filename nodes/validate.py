@@ -11,15 +11,22 @@ from tracing import trace_node
 
 @trace_node("validate")
 def validate_order(state):
-    items = state.get("selected_items")
+    raw_items = state.get("selected_items")
     date = state.get("selected_date")
 
-    if not items or not date:
+    if not raw_items or not date:
         state["need_clarification"] = True
         state["clarification_question"] = (
             "Thông tin đơn hàng chưa đầy đủ, vui lòng chọn lại ngày và món."
         )
         return state
+
+    items = []
+    for item in raw_items:
+        items.append({
+            "menu_id": item.get("menu_id") or item.get("id"),
+            "quantity": item.get("quantity", 1)
+        })
 
     result = state["api"].validate_order({
         "date": date,
@@ -27,5 +34,12 @@ def validate_order(state):
     })
 
     state["validation_result"] = result
-    return state
 
+    if not result["valid"]:
+        state["need_clarification"] = True
+        state["clarification_question"] = (
+            "Đơn hàng chưa hợp lệ:\n- "
+            + "\n- ".join(result["errors"])
+        )
+
+    return state
