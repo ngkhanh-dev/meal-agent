@@ -5,7 +5,7 @@ import json
 import re
 import os
 from dotenv import load_dotenv
-from trace import trace_node
+from tracing import trace_node
 load_dotenv()
 
 
@@ -38,7 +38,7 @@ def menu_agent(state):
       "date": "{state['selected_date']}",
       "items": [{{
         "menu_id": "...",
-        "quantity": 1
+        "quantity": "..."
       }}]
     }}
     """

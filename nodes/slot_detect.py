@@ -4,7 +4,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 import json
 import re
-from trace import trace_node
+from tracing import trace_node
+import datetime
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -28,6 +29,7 @@ def extract_json(raw: str) -> dict:
 
 @trace_node("slot_detect")
 def slot_detect(state):
+    today = datetime.date.today().isoformat()
     msg = state["user_message"].lower()
 
     if msg in ["đồng ý", "ok", "xác nhận"]:
@@ -39,14 +41,21 @@ def slot_detect(state):
         return state
     
     prompt = f"""
+    Today is {today}
     User message: {state['user_message']}
 
     Extract info if exists.
+    If the user mentions relative time like "hôm nay", "ngày mai",
+    convert it to YYYY-MM-DD.
     Output JSON:
     {{
-      "date": null | "YYYY-MM-DD",
-      "menu_name": null | "string"
+      "date": "{state['selected_date']}",
+      "items": [{{
+        "menu_id": "...",
+        "quantity": "..."
+      }}]
     }}
+    
     """
     raw = llm.invoke(prompt).content
     print("RAW LLM OUTPUT:", repr(raw))
@@ -55,7 +64,7 @@ def slot_detect(state):
 
     state["selected_date"] = data["date"]
     state["selected_items"] = (
-        [{"name": data["menu_name"], "quantity": 1}]
+        data["items"]
         if data["menu_name"] else None
     )
     return state

@@ -7,7 +7,7 @@
 #     )
 #     state["validation_summary"] = summary
 #     return state
-from trace import trace_node
+from tracing import trace_node
 
 @trace_node("validate")
 def validate_order(state):

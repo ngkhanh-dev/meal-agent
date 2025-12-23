@@ -1,18 +1,14 @@
-INFO:     Started server process [27604]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-
 ============================================================
-[TRACE] 2025-12-22T23:00:43.080552
+[TRACE] 2025-12-23T09:19:52.042486
 [NODE ] context
 [IN   ] {
   "user_id": null,
-  "user_message": "thời hôm nay như nào",
+  "user_message": "tôi muốn chọn menu M1 cho trưa hôm nay",
   "need_clarification": false
 }
 [OUT  ] {
   "user_id": null,
-  "user_message": "thời hôm nay như nào",
+  "user_message": "tôi muốn chọn menu M1 cho trưa hôm nay",
   "need_clarification": false,
   "kitchen": {
     "id": "K1",
@@ -38,11 +34,11 @@ INFO:     Application startup complete.
 ============================================================
 
 ============================================================
-[TRACE] 2025-12-22T23:00:43.081556
+[TRACE] 2025-12-23T09:19:52.044489
 [NODE ] slot_detect
 [IN   ] {
   "user_id": null,
-  "user_message": "thời hôm nay như nào",
+  "user_message": "tôi muốn chọn menu M1 cho trưa hôm nay",
   "kitchen": {
     "id": "K1",
     "name": "Bếp A"
@@ -65,10 +61,10 @@ INFO:     Application startup complete.
   ],
   "need_clarification": false
 }
-RAW LLM OUTPUT: '```json\n{\n  "date": null,\n  "menu_name": null\n}\n```'
+RAW LLM OUTPUT: '```json\n{\n  "date": "2025-12-23",\n  "menu_name": "M1"\n}\n```'
 [OUT  ] {
   "user_id": null,
-  "user_message": "thời hôm nay như nào",
+  "user_message": "tôi muốn chọn menu M1 cho trưa hôm nay",
   "kitchen": {
     "id": "K1",
     "name": "Bếp A"
@@ -90,17 +86,22 @@ RAW LLM OUTPUT: '```json\n{\n  "date": null,\n  "menu_name": null\n}\n```'
     }
   ],
   "need_clarification": false,
-  "selected_date": null,
-  "selected_items": null
+  "selected_date": "2025-12-23",
+  "selected_items": [
+    {
+      "name": "M1",
+      "quantity": 1
+    }
+  ]
 }
 ============================================================
 
 ============================================================
-[TRACE] 2025-12-22T23:00:44.753221
+[TRACE] 2025-12-23T09:19:53.553185
 [NODE ] check_complete
 [IN   ] {
   "user_id": null,
-  "user_message": "thời hôm nay như nào",
+  "user_message": "tôi muốn chọn menu M1 cho trưa hôm nay",
   "kitchen": {
     "id": "K1",
     "name": "Bếp A"
@@ -121,13 +122,18 @@ RAW LLM OUTPUT: '```json\n{\n  "date": null,\n  "menu_name": null\n}\n```'
       "reason": "Nghỉ lễ"
     }
   ],
-  "selected_date": null,
-  "selected_items": null,
+  "selected_date": "2025-12-23",
+  "selected_items": [
+    {
+      "name": "M1",
+      "quantity": 1
+    }
+  ],
   "need_clarification": false
 }
 [OUT  ] {
   "user_id": null,
-  "user_message": "thời hôm nay như nào",
+  "user_message": "tôi muốn chọn menu M1 cho trưa hôm nay",
   "kitchen": {
     "id": "K1",
     "name": "Bếp A"
@@ -148,13 +154,17 @@ RAW LLM OUTPUT: '```json\n{\n  "date": null,\n  "menu_name": null\n}\n```'
       "reason": "Nghỉ lễ"
     }
   ],
-  "selected_date": null,
-  "selected_items": null,
-  "need_clarification": true,
-  "clarification_question": "Bạn chưa chọn ngày và món, vui lòng bổ sung."
+  "selected_date": "2025-12-23",
+  "selected_items": [
+    {
+      "name": "M1",
+      "quantity": 1
+    }
+  ],
+  "need_clarification": false
 }
 ============================================================
-INFO:     127.0.0.1:50294 - "POST /chat HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:59604 - "POST /chat HTTP/1.1" 500 Internal Server Error
 ERROR:    Exception in ASGI application
 Traceback (most recent call last):
   File "D:\Nguyen Dang Khanh\meal_agent\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 411, in run_asgi
@@ -242,4 +252,4 @@ Traceback (most recent call last):
     decision = "clarify" if state.need_clarification else "validate"
                             ^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'dict' object has no attribute 'need_clarification'
-During task with name 'check' and id 'e30db777-0267-a44f-29e1-7476865a548f'
+During task with name 'check' and id 'b7f435e2-a682-7ef4-323f-95b2ac123318'

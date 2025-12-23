@@ -30,7 +30,7 @@ graph.add_edge("slot", "check")
 
 # ===== Routing sau CHECK =====
 def route_after_check(state: OrderState):
-    decision = "clarify" if state.need_clarification else "validate"
+    decision = "clarify" if state.get("need_clarification") else "validate"
     print(f"[ROUTE] check → {decision}")
     return decision
 
@@ -50,7 +50,7 @@ graph.add_edge("clarify", "slot")
 
 # ===== Routing  VALIDATE =====
 def route_after_validate(state: OrderState):
-    decision = "order" if state.confirmation else "slot"
+    decision = "order" if state.get("confirmation") else "slot"
     print(f"[ROUTE] validate → {decision}")
     return decision
 

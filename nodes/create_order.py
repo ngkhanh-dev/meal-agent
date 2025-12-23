@@ -1,4 +1,4 @@
-from trace import trace_node
+from tracing import trace_node
 
 @trace_node("create_order")
 def create_order(state):
