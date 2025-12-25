@@ -38,31 +38,14 @@ def chat(req: ChatReq):
     }
     result = graph_app.invoke(state)
 
-    # if result.get("end"):
-    #     return {"reply": result["reply"]}
-
-    # return {
-    #     "order_id": result["order_result"]["order_id"],
-    #     "date": result["selected_date"],
-    #     "items": result["selected_items"]
-    # }
-    # 1. Clarification
-    if result.get("need_clarification"):
+    if result.get("clarification_question"):
         return {
             "type": "clarification",
-            "message": result.get("clarification_question")
+            "message": result["clarification_question"]
         }
 
-    # 2. Order created
-    if "order_result" in result:
+    if result.get("order_summary"):
         return {
-            "type": "order_success",
-            "order_id": result["order_result"]["order_id"],
-            "order": result["order_result"]
+            "type": "summary",
+            "message": result["order_summary"]
         }
-
-    # 3. Fallback (defensive)
-    return {
-        "type": "error",
-        "message": "Không thể xử lý yêu cầu."
-    }

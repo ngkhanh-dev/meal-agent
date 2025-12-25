@@ -1,69 +1,40 @@
 from langgraph.graph import StateGraph, END
-from state import OrderState
+from langgraph.checkpoint.memory import MemorySaver
 
-from nodes.context import load_context
-from nodes.slot_detect import slot_detect
-from nodes.check_complete import check_complete
+from state import OrderState
+from nodes.dummy import load_context
+from nodes.order_validate import order_validate
 from nodes.clarify import ask_clarification
-from nodes.menu_agent import menu_agent
-from nodes.validate import validate_order
-from nodes.create_order import create_order
+from routes import route_after_understand, route_after_clarify
 
 
 graph = StateGraph(OrderState)
+memory = MemorySaver()
 
-# ===== Nodes =====
-graph.add_node("context", load_context)
-graph.add_node("slot", slot_detect)
-graph.add_node("check", check_complete)
+graph.add_node("dummy", load_context)
+graph.add_node("validate", order_validate)
 graph.add_node("clarify", ask_clarification)
-graph.add_node("menuu", menu_agent)
-graph.add_node("validate", validate_order)
-graph.add_node("order", create_order)
 
-# ===== Entry =====
-graph.set_entry_point("context")
+graph.set_entry_point("dummy")
 
-# ===== Linear start =====
-graph.add_edge("context", "slot")
-graph.add_edge("slot", "check")
-
-# ===== Routing sau CHECK =====
-def route_after_check(state: OrderState):
-    decision = "clarify" if state.get("need_clarification") else "validate"
-    print(f"[ROUTE] check → {decision}")
-    return decision
+graph.add_edge("dummy", "validate")
 
 graph.add_conditional_edges(
-    "check",
-    route_after_check,
+    "understand",
+    route_after_understand,
     {
         "clarify": "clarify",
-        "validate": "validate",
+        END: END,
     },
 )
-
-# ===== Clarify flow =====
-# clarify chỉ hỏi → user trả lời → slot detect lại
-graph.add_edge("clarify", "slot")
-
-
-# ===== Routing  VALIDATE =====
-def route_after_validate(state: OrderState):
-    decision = "order" if state.get("confirmation") else "slot"
-    print(f"[ROUTE] validate → {decision}")
-    return decision
 
 graph.add_conditional_edges(
-    "validate",
-    route_after_validate,
+    "clarify",
+    route_after_clarify,
     {
-        "order": "order",
-        "slot": "slot",
+        "validate": "validate",
+        END: END,
     },
 )
 
-# ===== Order là điểm cuối =====
-graph.add_edge("order", END)
-
-app = graph.compile()
+app = graph.compile(checkpointer=memory)

@@ -11,11 +11,7 @@ class OrderState(TypedDict, total=False):
     selected_date: Optional[str]
     selected_items: Optional[List[dict]]
 
-    need_clarification: bool
     clarification_question: Optional[str]
-
-
     validation_summary: str
-    confirmation: str
-    
-    order_result: Optional[dict]
+
+
