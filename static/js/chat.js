@@ -1,14 +1,27 @@
 const chatBox = document.getElementById("chat-box");
 const input = document.getElementById("user-input");
 
-function appendMessage(text, sender, typing = false) {
-    const div = document.createElement("div");
-    div.className = `message ${sender}`;
-    if (typing) div.classList.add("typing");
-    div.innerText = text;
-    chatBox.appendChild(div);
+/**
+ * Thêm tin nhắn vào khung chat
+ * @param {string} text - Nội dung tin nhắn
+ * @param {string} sender - 'user' hoặc 'bot'
+ * @param {boolean} isBot - Xác định icon hiển thị
+ */
+function appendMessage(text, sender, isBot = false) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = `msg ${sender}`;
+
+    const iconClass = isBot ? "fas fa-robot" : "fas fa-user";
+
+    msgDiv.innerHTML = `
+        <div class="icon"><i class="${iconClass}"></i></div>
+        <div class="bubble">${text}</div>
+    `;
+
+    chatBox.appendChild(msgDiv);
+
     chatBox.scrollTop = chatBox.scrollHeight;
-    return div;
+    return msgDiv;
 }
 
 async function sendMessage() {
@@ -18,7 +31,11 @@ async function sendMessage() {
     appendMessage(message, "user");
     input.value = "";
 
-    const typingDiv = appendMessage("Agent đang nhập...", "agent", true);
+    const typingDiv = appendMessage(
+        "Đang chuẩn bị thực đơn cho bạn...",
+        "bot",
+        true
+    );
 
     try {
         const res = await fetch("http://127.0.0.1:8000/chat", {
@@ -26,19 +43,46 @@ async function sendMessage() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ message }),
+            body: JSON.stringify({ message: message }),
         });
 
+        if (!res.ok) throw new Error("Lỗi kết nối server");
+
         const data = await res.json();
+
         typingDiv.remove();
-        appendMessage(data.reply, "agent");
+        appendMessage(data.message, "bot", true);
     } catch (err) {
         typingDiv.remove();
-        appendMessage("Lỗi kết nối server", "agent");
+        appendMessage(
+            "Rất tiếc, tôi không thể kết nối với nhà bếp lúc này. Vui lòng thử lại sau!",
+            "bot",
+            true
+        );
+        console.error("Chat Error:", err);
     }
 }
 
-input.addEventListener("keydown", function (e) {
+function quickOrder(type) {
+    let prompt = "";
+    switch (type) {
+        case "Thực đơn":
+            prompt = "Cho tôi xem thực đơn hôm nay";
+            break;
+        case "Gợi ý":
+            prompt = "Gợi ý cho tôi vài món ngon nhé";
+            break;
+        case "Đơn hàng":
+            prompt = "Kiểm tra trạng thái đơn hàng của tôi";
+            break;
+        default:
+            prompt = type;
+    }
+    input.value = prompt;
+    sendMessage();
+}
+
+input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         sendMessage();
     }

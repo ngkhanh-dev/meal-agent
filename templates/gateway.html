@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Meal Ordering Agent</title>
+        <title>Hệ thống Đăng ký Vào/Ra</title>
         <link rel="stylesheet" href="/static/css/chat.css" />
         <link
             rel="stylesheet"
@@ -14,22 +14,22 @@
         <div class="app-container">
             <aside class="sidebar">
                 <div class="sidebar-top">
-                    <button class="action-main-btn" onclick="location.reload()">
+                    <button class="action-main-btn">
                         <i class="fas fa-plus"></i>
-                        <span>Cuộc hội thoại mới</span>
+                        <span>Phiên làm việc mới</span>
                     </button>
                 </div>
 
                 <div class="history-list" id="history-log">
-                    <p class="label">Lịch sử đặt món</p>
-                    <div class="log-item">Cơm gà Hải Nam - 12:30</div>
-                    <div class="log-item">Phở bò sốt vang - Hôm qua</div>
+                    <p class="label">Lịch sử gần đây</p>
+                    <div class="log-item">Vào: 08:00 AM</div>
+                    <div class="log-item">Ra: 05:30 PM</div>
                 </div>
 
                 <div class="sidebar-bottom">
                     <div class="nav-link">
-                        <i class="fas fa-utensils"></i>
-                        <span>Thực đơn hôm nay</span>
+                        <i class="fas fa-user-shield"></i>
+                        <span>Quản trị viên</span>
                     </div>
                     <div class="nav-link" onclick="location.href='/auth.html'">
                         <i class="fas fa-sign-out-alt"></i>
@@ -41,41 +41,44 @@
             <main class="chat-zone">
                 <header class="chat-header">
                     <div class="system-status">
-                        Meal Agent sẵn sàng <span class="dot"></span>
+                        Hệ thống đang hoạt động <span class="dot"></span>
                     </div>
                     <div class="user-pill">Nguyễn Văn A</div>
                 </header>
 
-                <div class="display-area" id="chat-box">
+                <div class="display-area" id="display-area">
                     <div class="msg bot">
                         <div class="icon"><i class="fas fa-robot"></i></div>
                         <div class="bubble">
-                            Chào mừng bạn! Tôi là trợ lý đặt món. Hôm nay bạn
-                            muốn ăn gì nào?
+                            Chào mừng bạn. Bạn muốn thực hiện việc **Đăng ký
+                            vào** hay **Đăng ký ra** hôm nay?
                         </div>
                     </div>
                 </div>
 
                 <div class="control-center">
                     <div class="quick-actions">
-                        <button class="chip" onclick="quickOrder('Thực đơn')">
-                            📋 Xem thực đơn
+                        <button class="chip" onclick="quickAction('vào')">
+                            📝 Đăng ký Vào
                         </button>
-                        <button class="chip" onclick="quickOrder('Gợi ý')">
-                            💡 Gợi ý món ngon
+                        <button class="chip" onclick="quickAction('ra')">
+                            🚶 Đăng ký Ra
                         </button>
-                        <button class="chip" onclick="quickOrder('Đơn hàng')">
-                            🛍️ Kiểm tra đơn hàng
+                        <button
+                            class="chip"
+                            onclick="quickAction('trạng thái')"
+                        >
+                            📊 Xem trạng thái
                         </button>
                     </div>
 
                     <div class="input-container">
                         <input
                             type="text"
-                            id="user-input"
-                            placeholder="Nhập món ăn bạn muốn tìm..."
+                            id="main-input"
+                            placeholder="Nhập yêu cầu hoặc ghi chú..."
                         />
-                        <button id="send-btn" onclick="sendMessage()">
+                        <button id="send-btn">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
@@ -83,6 +86,6 @@
             </main>
         </div>
 
-        <script src="/static/js/chat.js"></script>
+        <script src="/static/js/gateway.js"></script>
     </body>
 </html>

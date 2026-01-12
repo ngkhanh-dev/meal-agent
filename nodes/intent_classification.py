@@ -1,6 +1,3 @@
-from services.api_client import MealAPI
-from tracing import trace_node
-
 from typing import Literal
 
 Flow = Literal["menu", "order"]
@@ -14,32 +11,25 @@ EXPLICIT_ORDER = [
 ]
 
 
-@trace_node("context")
-def load_context(state):
-    api = MealAPI()
-    state["api"] = api
-    state["kitchen"] = api.default_kitchen()
-    state["menu"] = api.menus("today")
-    state["holidays"] = api.holidays()
+def intent_classification(state: dict) -> Flow:
+    """
+    Session-level intent routing.
+    Quyết định FLOW hiện tại của hội thoại.
+    """
 
     user_msg = state.get("user_message", "").lower().strip()
     active_flow = state.get("active_flow")
 
-
-    # 1. Explicit switch overrides everything
     if any(k in user_msg for k in EXPLICIT_MENU):
         state["active_flow"] = "menu"
-        return state
+        return "menu"
 
     if any(k in user_msg for k in EXPLICIT_ORDER):
         state["active_flow"] = "order"
-        return state
+        return "order"
 
-    # 2. Continue current flow if exists
     if active_flow in ("menu", "order"):
-        return state
+        return active_flow
 
-    # 3. Default
     state["active_flow"] = "menu"
-    return state
-
+    return "menu"

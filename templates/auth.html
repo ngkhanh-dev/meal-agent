@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Đăng nhập - Meal Agent</title>
+        <link rel="stylesheet" href="/static/css/auth.css" />
+    </head>
+    <body>
+        <div class="auth-container">
+            <div class="auth-card">
+                <form
+                    id="login-form"
+                    class="auth-form"
+                    onsubmit="handleLogin(event)"
+                >
+                    <h2>Chào mừng trở lại</h2>
+                    <p style="color: #666; margin-bottom: 20px">
+                        Vui lòng đăng nhập để tiếp tục
+                    </p>
+
+                    <input
+                        type="text"
+                        id="login-username"
+                        placeholder="Tên đăng nhập"
+                        required
+                    />
+
+                    <input
+                        type="password"
+                        id="login-password"
+                        placeholder="Mật khẩu"
+                        required
+                    />
+
+                    <button type="submit" class="btn-primary">Đăng nhập</button>
+                </form>
+
+                <p id="message" class="message"></p>
+            </div>
+        </div>
+
+        <script src="/static/js/auth.js"></script>
+    </body>
+</html>

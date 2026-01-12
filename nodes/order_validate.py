@@ -4,6 +4,8 @@ import re
 from tracing import trace_node
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
@@ -34,7 +36,7 @@ def order_validate(state):
       "items": [
         {{
           "menu_id": "...",
-          "quantity": 1
+          "quantity": "..."
         }}
       ]
     }}
@@ -42,7 +44,7 @@ def order_validate(state):
 
     raw = llm.invoke(prompt).content
     data = extract_json(raw)
-
+    
     # Add slot
     if data.get("date"):
         state["selected_date"] = data["date"]
