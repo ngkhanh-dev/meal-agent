@@ -12,9 +12,12 @@ class OrderState(TypedDict, total=False):
     menu: Optional[list]
     holidays: Optional[list]
 
+    menu_results: Optional[list]
+
     selected_date: Optional[str]
     selected_items: Optional[List[dict]]
 
-    clarification_question: Optional[str]
-    order_summary: str
-    menu_message: str
+    chatbot_message: Optional[str]
+
+    # order_summary: str
+    # menu_message: str

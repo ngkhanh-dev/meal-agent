@@ -45,38 +45,36 @@ def order_validate(state):
     raw = llm.invoke(prompt).content
     data = extract_json(raw)
     
-    # Add slot
     if data.get("date"):
         state["selected_date"] = data["date"]
 
     if data.get("items"):
         state["selected_items"] = data["items"]
 
-    # Check complete
-    missing = []
-    if not state.get("selected_date"):
-        missing.append("ngày")
-    if not state.get("selected_items"):
-        missing.append("món")
+    # missing = []
+    # if not state.get("selected_date"):
+    #     missing.append("ngày")
+    # if not state.get("selected_items"):
+    #     missing.append("món")
 
-    if missing:
-        state["clarification_question"] = (
-            f"Bạn chưa chọn {' và '.join(missing)}, vui lòng bổ sung."
-        )
-        return state
+    # if missing:
+    #     state["clarification_question"] = (
+    #         f"Bạn chưa chọn {' và '.join(missing)}, vui lòng bổ sung."
+    #     )
+    #     return state
 
-    # Summary
-    items_text = []
-    for i in state["selected_items"]:
-        items_text.append(
-            f"- {i.get('menu_id')} x {i.get('quantity', 1)}"
-        )
+    # # Summary
+    # items_text = []
+    # for i in state["selected_items"]:
+    #     items_text.append(
+    #         f"- {i.get('menu_id')} x {i.get('quantity', 1)}"
+    #     )
 
-    state["order_summary"] = (
-        "Thông tin đơn hàng của bạn:\n"
-        f"Ngày: {state['selected_date']}\n"
-        "Món:\n"
-        + "\n".join(items_text)
-    )
+    # state["order_summary"] = (
+    #     "Thông tin đơn hàng của bạn:\n"
+    #     f"Ngày: {state['selected_date']}\n"
+    #     "Món:\n"
+    #     + "\n".join(items_text)
+    # )
 
     return state

@@ -98,7 +98,6 @@ from tracing import trace_node
 
 load_dotenv()
 
-# Sử dụng model ID chính xác để tránh lỗi 404
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash", 
     temperature=0, 
@@ -149,46 +148,47 @@ def menu_agent(state: dict):
     """
     
     try:
-        # Gọi LLM lấy tham số
         res = llm.invoke(time_prompt)
         params = extract_json(res.content)
         
         if not params:
             return {"error": "Không thể xác định thời gian tra cứu", "menu_results": []}
 
-        # --- BƯỚC 2: TRA CỨU DỮ LIỆU (LOOKUP ONLY) ---
-        # Gọi hàm xử lý logic đã viết ở các bước trước
-        found_menus = get_menus(
+        # found_menus = get_menus(
+        #     from_date_str=params.get("fromDate"), 
+        #     to_date_str=params.get("toDate"), 
+        #     is_special=params.get("isSpecial", 0)
+        # )
+    
+        state["menu_results"] = get_menus(
             from_date_str=params.get("fromDate"), 
             to_date_str=params.get("toDate"), 
             is_special=params.get("isSpecial", 0)
         )
     
-        # --- BƯỚC 3: GEN CÂU TRẢ LỜI ---
-        # Chuyển list kết quả thành text để LLM đọc
-        if found_menus:
-            menu_context = ""
-            for menu in found_menus:
-                menu_context += f"- Ngày {menu['date']}: {', '.join(menu['items'])}\n"
-        else:
-            menu_context = "Không tìm thấy dữ liệu."
+        # if found_menus:
+        #     menu_context = ""
+        #     for menu in found_menus:
+        #         menu_context += f"- Ngày {menu['date']}: {', '.join(menu['items'])}\n"
+        # else:
+            # menu_context = "Không tìm thấy dữ liệu."
 
-        final_prompt = f"""
-        Bạn là trợ lý nhà ăn. Hãy trả lời câu hỏi: "{user_msg}" 
-        Dựa trên dữ liệu:
-        {menu_context}
+        # final_prompt = f"""
+        # Bạn là trợ lý nhà ăn. Hãy trả lời câu hỏi: "{user_msg}" 
+        # Dựa trên dữ liệu:
+        # {menu_context}
         
-        Lưu ý: Trình bày đẹp mắt, dễ đọc.
-        """
+        # Lưu ý: Trình bày đẹp mắt, dễ đọc.
+        # """
         
-        final_res = llm.invoke(final_prompt)
-        
-        # Trả về state bổ sung
-        return {
-            # "search_params": params,
-            # "menu_results": found_menus,
-            "menu_message": final_res.content # Biến bạn cần
-        }
+        # final_res = llm.invoke(final_prompt)
+        # return {
+        #     # "search_params": params,
+        #     # "menu_results": found_menus,
+        #     # "chatbot_message": final_res.content 
+
+        # }
+        return state
         
     except Exception as e:
         print(f"LỖI TẠI MENU_AGENT: {str(e)}")
@@ -196,3 +196,5 @@ def menu_agent(state: dict):
             "error": f"Lỗi truy xuất: {str(e)}",
             "menu_results": []
         }
+    
+    
