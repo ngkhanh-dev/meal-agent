@@ -70,33 +70,37 @@ def llm_classify_intent(user_message: str) -> Tuple[Flow, float]:
     return flow, conf
 
 @trace_node("intent_classification")
-def intent_classification(state: dict) -> Flow:
+def intent_classification(state: dict) -> dict:
     user_msg = state.get("user_message", "").lower().strip()
-    active_flow = state.get("active_flow")
+    prev_flow = state.get("active_flow")
 
+    new_flow = None
+
+    # 1. Rule-based ưu tiên tuyệt đối
     if any(k in user_msg for k in EXPLICIT_MENU):
-        state["active_flow"] = "menu"
-        return "menu"
+        new_flow = "menu"
 
-    if any(k in user_msg for k in EXPLICIT_ORDER):
-        state["active_flow"] = "order"
-        return "order"
+    elif any(k in user_msg for k in EXPLICIT_ORDER):
+        new_flow = "order"
 
-    try:
-        flow, conf = llm_classify_intent(user_msg)
+    # 2. LLM fallback
+    else:
+        try:
+            flow, conf = llm_classify_intent(user_msg)
 
-        if flow == "other":
-            return active_flow or "menu"
+            if flow != "other" and conf >= CONFIDENCE_THRESHOLD:
+                new_flow = flow
 
-        if conf >= CONFIDENCE_THRESHOLD:
-            state["active_flow"] = flow
-            return flow
+        except Exception:
+            pass
 
-    except Exception:
-        pass
+    # 3. Resolve flow
+    if new_flow is None:
+        new_flow = prev_flow or "menu"
 
-    if active_flow in ("menu", "order"):
-        return active_flow
+    flow_changed = new_flow != prev_flow
 
-    state["active_flow"] = "menu"
-    return "menu"
+    return {
+        "active_flow": new_flow,
+        "flow_changed": flow_changed
+    }

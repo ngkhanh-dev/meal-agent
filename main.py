@@ -71,23 +71,23 @@ def chat(req: ChatReq):
         result = graph_app.invoke(state, config=config)
         print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
-        if result.get("menu_message"):
+        if result.get("chatbot_message"):
             return {
-                "type": "menu",
-                "message": result["menu_message"]
+                # "type": "menu",
+                "message": result["chatbot_message"]
             }
 
-        if result.get("clarification_question"):
-            return {
-                "type": "clarification",
-                "message": result["clarification_question"]
-            }
+        # if result.get("clarification_question"):
+        #     return {
+        #         "type": "clarification",
+        #         "message": result["clarification_question"]
+        #     }
 
-        if result.get("order_summary"):
-            return {
-                "type": "summary",
-                "message": result["order_summary"]
-            }
+        # if result.get("order_summary"):
+        #     return {
+        #         "type": "summary",
+        #         "message": result["order_summary"]
+        #     }
 
     except GraphRecursionError as e:
         print(f"GraphRecursionError occurred: {e}")

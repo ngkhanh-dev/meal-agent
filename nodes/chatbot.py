@@ -51,7 +51,7 @@ def chatbot(state: dict):
         + Nếu rỗng, nói rõ không có dữ liệu
     - flow = order:
         + Nếu missing không rỗng → hỏi bổ sung
-        + Nếu đủ → xác nhận đơn
+        + Nếu đủ → xác nhận đơn, đưa ra một câu hỏi xác thực xem khách có đồng ý hay chỉnh sửa gì không
     - KHÔNG đổi flow
     - KHÔNG giải thích nội bộ
 
@@ -59,5 +59,6 @@ def chatbot(state: dict):
     Chỉ trả về nội dung nói với người dùng
     """
 
-    state["chatbot_message"] = extract_json(llm.invoke(prompt).content.strip())
+    state["chatbot_message"] = llm.invoke(prompt).content.strip()
+    
     return state
